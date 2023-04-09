@@ -9,4 +9,15 @@ import 'element-plus/dist/index.css'
 import '@/assets/styles/border.css'
 import '@/assets/styles/reset.css'
 
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+import SvgIcon from '@/icons'
+
+const app=createApp(App)
+SvgIcon(app);
+
+app.use(store)
+
+app.use(router)
+
+app.use(ElementPlus)
+app.mount('#app')
+
