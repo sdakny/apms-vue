@@ -1,30 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+    <el-button type="primary" @click="handleLogin">test login</el-button>
+    <el-button type="danger" @click="handleUserList">test user request</el-button>
 </template>
 
+<script setup>
+import requestUtil from '@/utils/request'
+import store from '@/store'
+
+const handleLogin=async ()=>{
+  let result = await requestUtil.get("test/login");
+  let data = result.data;
+  if(data.code = 200){
+    const token = data.token;
+    console.log("login success: token=" + token);
+    store.commit('SET_TOKEN', token);
+  }else{
+    console.log("login error!");
+  }
+}
+
+const handleUserList=async ()=>{
+  let result = await requestUtil.get("test/user/list");
+  let data = result.data;
+  if(data.code = 200){
+    const userList = data.userList;
+    console.log("User list info: userList=" + userList);
+  }
+}
+
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
