@@ -13,7 +13,7 @@
               auto-complete="off"
               placeholder="Username"
           >
-  
+          <template #prefix><svg-icon icon="user" /></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -25,7 +25,7 @@
               placeholder="Password"
               @keyup.enter="handleLogin"
           >
-  
+          <template #prefix><svg-icon icon="password" /></template>
           </el-input>
         </el-form-item>
   
