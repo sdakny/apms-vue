@@ -52,11 +52,15 @@
 </template>
 
 <script setup>
-  import requestUtil from '@/utils/request'
+  import requestUtil from '@/util/request'
   import store from '@/store'
   import {ref} from 'vue'
   import qs from 'qs'
   import { ElMessage } from 'element-plus'
+  import router from "@/router"
+
+
+
 
   const loginRef = ref(null)
 
@@ -79,6 +83,7 @@
             if(data.code==200){
               const token = data.authorization;
               store.commit('SET_TOKEN',token);
+              router.replace("/")
             }else{
               ElMessage.error(data.msg)
             }

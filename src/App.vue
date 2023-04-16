@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import requestUtil from '@/utils/request'
+import requestUtil from '@/util/request'
 import store from '@/store'
 
 // const handleLogin=async ()=>{
